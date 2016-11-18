@@ -9,6 +9,10 @@
 
 apply plugin: 'java'
 
+version = '1.7.21'
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
+
 repositories {
     jcenter()
 }
