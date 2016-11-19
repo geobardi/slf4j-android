@@ -21,3 +21,18 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile 'com.google.android:android:4.1.1.4'
 }
+
+apply plugin: 'maven'
+ext {
+    mavenRepository = 'D:/work/maven'
+}
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository url: "file:///work/maven"
+            pom.groupId = 'jp.co.ois.android'
+            pom.artifactId = 'slf4j-android'
+            pom.version = '1.7.21-beta'
+        }
+    }
+}
