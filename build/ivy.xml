@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
-  <info organisation="" module="slf4j-android" revision="1.7.21-beta" status="integration" default="true" publication="20161119143723"/>
+  <info organisation="" module="slf4j-android" revision="1.7.21" status="integration" default="true" publication="20161119202321"/>
   <configurations>
     <conf name="compileClasspath" visibility="private" extends="compileOnly"/>
     <conf name="compileOnly" visibility="private" extends="compile"/>

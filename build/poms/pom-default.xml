@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>jp.co.ois.android</groupId>
   <artifactId>slf4j-android</artifactId>
-  <version>1.7.21-beta</version>
+  <version>1.7.21</version>
   <dependencies>
     <dependency>
       <groupId>org.slf4j</groupId>

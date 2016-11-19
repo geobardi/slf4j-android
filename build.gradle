@@ -9,7 +9,7 @@
 
 apply plugin: 'java'
 
-version = '1.7.21-beta'
+version = '1.7.21'
 targetCompatibility = '1.7'
 sourceCompatibility = '1.7'
 
@@ -23,16 +23,13 @@ dependencies {
 }
 
 apply plugin: 'maven'
-ext {
-    mavenRepository = 'D:/work/maven'
-}
 uploadArchives {
     repositories {
         mavenDeployer {
             repository url: "file:///work/maven"
             pom.groupId = 'jp.co.ois.android'
             pom.artifactId = 'slf4j-android'
-            pom.version = '1.7.21-beta'
+            pom.version = '1.7.21'
         }
     }
 }
