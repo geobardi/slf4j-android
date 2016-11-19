@@ -24,10 +24,11 @@
  */
 package org.slf4j.impl;
 
-import android.util.Log;
 import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MarkerIgnoringBase;
 import org.slf4j.helpers.MessageFormatter;
+
+import android.util.Log;
 
 public class AndroidLoggerAdapter extends MarkerIgnoringBase {
 
@@ -178,9 +179,9 @@ public class AndroidLoggerAdapter extends MarkerIgnoringBase {
     }
 
     protected void logInternal(int priority, String message, Throwable throwable) {
-        String head = AndroidLoggerConfig.getInstance().getHead();
-        if (head != null) {
-            message = format(head) + " " + message;
+        String format = AndroidLoggerConfig.getInstance().getFormat();
+        if (format != null) {
+            message = format(format, message);
         }
         if (throwable != null) {
             message += '\n' + Log.getStackTraceString(throwable);
@@ -190,17 +191,60 @@ public class AndroidLoggerAdapter extends MarkerIgnoringBase {
         Log.println(priority, tag, message);
     }
 
-    final static int CALLER_NO = 4;
+    protected String format(String format, String message) {
+        StackTraceElement elem = null;
+        StringBuilder sb = new StringBuilder(80);
+        int len = format.length();
+        for (int ix = 0; ix < len; ix ++) {
+        	char ch = format.charAt(ix);
+        	if (ch == '%' && (ix + 1) < len) {
+        		char tp = format.charAt(ix + 1);
+        		ix ++;
+        		switch (tp) {
+        		case 'c':
+        			sb.append(getSimpleName());
+        			break;
+        		case 'F':
+        			elem = (elem == null)? getCallerElement(): elem;
+        			sb.append(elem.getFileName());
+        			break;
+        		case 'L':
+        			elem = (elem == null)? getCallerElement(): elem;
+        			sb.append(elem.getLineNumber());
+        			break;
+        		case 'M':
+        			elem = (elem == null)? getCallerElement(): elem;
+        			sb.append(elem.getMethodName());
+        			break;
+        		case 'm':
+        			sb.append(message);
+        			break;
+        		case '%':
+        			sb.append(tp);
+        			break;
+        		default:
+        			sb.append(ch);
+        			sb.append(tp);
+        		}
+        	} else {
+        		sb.append(ch);
+        	}
+        }
+        return sb.toString();
+    }
 
-    protected String format(String head) {
+    final static int CALLER_NO = 5;
+    private StackTraceElement getCallerElement() {
         StackTraceElement[] elems = new Throwable().getStackTrace();
         if (elems.length < CALLER_NO) {
-            return "-";
+            return new StackTraceElement("-", "-", "-", -1);
         }
-        StackTraceElement elem = elems[CALLER_NO];
-        String str = head.replace("%F", elem.getFileName());
-        str = str.replace("%L", String.valueOf(elem.getLineNumber()));
-        str = str.replace("%m", elem.getMethodName());
-        return str;
+        return elems[CALLER_NO];
     }
+
+    protected String getSimpleName() {
+    	int ix = name.lastIndexOf('.');
+    	return (ix >= 0)? name.substring(ix + 1): name;
+    }
+
 }

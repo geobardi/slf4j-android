@@ -24,7 +24,7 @@ public class AndroidLoggerConfig {
 
     String tag;
 
-    String Head = "(%F:%L) %m";
+    String format = "(%F:%L) %M %m";
 
     int rootLevel;
 
@@ -38,12 +38,12 @@ public class AndroidLoggerConfig {
         this.tag = tag;
     }
 
-    public String getHead() {
-        return Head;
+    public String getFormat() {
+        return format;
     }
 
-    public void setHead(String Head) {
-        this.Head = Head;
+    public void setFormat(String format) {
+        this.format = format;
     }
 
     public int getRootLevel() {
