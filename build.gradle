@@ -9,7 +9,7 @@
 
 apply plugin: 'java'
 
-version = '1.7.21'
+version = '1.7.21-beta'
 targetCompatibility = '1.7'
 sourceCompatibility = '1.7'
 
