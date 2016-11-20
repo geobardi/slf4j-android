@@ -38,7 +38,7 @@ public class MyApplication extends Application {
 ```
 
 ### フォーマット
-フォーマットでサポートしているものは以下いなります。
+setFormatでサポートしているものは以下になります。
 
 | 記号 | 説明 |
 | --- | --- |
@@ -49,5 +49,5 @@ public class MyApplication extends Application {
 | %c | ログイベントのカテゴリー名(※1)を出力する。 |
 | %% | %を出力する。 |
 
-※1 カテゴリーが xxx.yyy.ZZZ だった場合は ZZZ を出力する。
+※1 カテゴリー名が xxx.yyy.ZZZ だった場合は ZZZ を出力する。
 
