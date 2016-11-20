@@ -26,6 +26,7 @@ public class MyApplication extends Application {
             config.setRootLevel(Log.DEBUG);
             config.setLevel("org.apache", Log.ERROR);
             config.setLevel("com.example", Log.VERBOSE);
+            config.setFormat("(%F:%L) %M %m");
         } else {
             config.setRootLevel(Log.INFO);
             config.setLevel("org.apache", Log.ERROR);
@@ -36,3 +37,14 @@ public class MyApplication extends Application {
 }
 ```
 
+### フォーマット
+フォーマットでサポートしているものは以下いなります。
+| 記号  | 説明 |
+| ------------- | ------------- |
+| %F  | ログ要求が発生したファイル名を出力する。  |
+| %L  | ログ要求が発生した行番号を出力する。  |
+| %M  | ログ要求が発生したメソッド名を出力する。  |
+| %m  | ロギングイベントで設定されたメッセージを出力する。  |
+| %c  | ログイベントのカテゴリー名(※1)を出力する。  |
+| %%  | %を出力する。 |
+※1 カテゴリーが xxx.yyy.ZZZ だった場合は ZZZ を出力する。
