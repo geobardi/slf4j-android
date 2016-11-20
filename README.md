@@ -31,7 +31,7 @@ public class MyApplication extends Application {
             config.setLevel("org.apache", Log.ERROR);
             config.setFormat("(%c) %m");
         }
-        logger.info("called. {}, {}", "hoge", 999);
+        logger.info("version: {}, {}", BuildConfig.VERSION_CODE, BuildConfig.VERSION_NAME);
     }
 }
 ```
