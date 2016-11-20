@@ -48,3 +48,8 @@ public class MyApplication extends Application {
 | %c  | ログイベントのカテゴリー名(※1)を出力する。  |
 | %%  | %を出力する。 |
 ※1 カテゴリーが xxx.yyy.ZZZ だった場合は ZZZ を出力する。
+
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
