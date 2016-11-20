@@ -1,8 +1,8 @@
 # slf4j-android
-slf4j 用の androidログ出力 adaptor です。
+slf4j 用の androidログ出力 adaptor です。  
 ファイル名、行番号、メソッド名の出力が可能です。
 
-使い方
+使い方  
 build.gradle
 ```
 repositories {
